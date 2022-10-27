@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="container">
+  <div class="card">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+      <div class="row">
+        <div class="col-md-12">
+          <label for="Nombre">Correo elecronico</label>
+          <input type="text" class="form-control" formControlName="email">
+        </div>
+        <div class="col-md-12">
+          <label for="Nombre">Contraseña</label>
+          <input type="text" class="form-control" formControlName="password">
+        </div>
+        <div class="col-md-12">
+          <input type="submit" class="btn btn-primary w-100" [disabled]="!loginForm.valid" value="Iniciar sesion">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
