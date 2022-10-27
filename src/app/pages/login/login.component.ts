@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   buildForm() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(5), Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(1)]],
     });
   }
 
@@ -28,6 +28,16 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.user = this.loginForm.value;
 
-    this._ls.submitLogin(this.user)
+    this._ls.submitLogin(this.user).subscribe({
+      next(data: any){
+        console.log(data)
+      },
+      error(err) {
+          console.log(err)
+      },
+      complete() {
+          console.log('completo')
+      },
+    })
   }
 }
